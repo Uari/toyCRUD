@@ -9,12 +9,11 @@
 
     <link rel="stylesheet" href="/css/board.css" />
     <script type="text/javascript">
-      
-			const boardList = () => {
+      const boardList = () => {
         location.href = '/board/boardList.gd2';
       };
-      
-			const searchEnter = (event) => {
+      /* ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹ */
+      const searchEnter = (event) => {
         if (window.event.keyCode == 13) {
           console.log('searchEnter');
           console.log(window.event.keyCode);
@@ -29,8 +28,8 @@
         console.log(`${gubun} , ${keyword}`);
         location.href = '/board/boardList.gd2?gubun=' + gubun + '&keyword=' + keyword;
       };
-      
-			const boardInsert = () => {
+
+      const boardInsert = () => {
         document.querySelector('#f_board').submit(); //form태그에 묶인 componunt값들이 전송된다.
       };
 
@@ -79,27 +78,27 @@
 
       <!-- 회원목록 시작 -->
       <div class="board-list">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th width="10%">#</th>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th width="10%">#</th>
               <th width="40%">제목</th>
               <th width="20%">첨부파일</th>
               <th width="15%">작성자</th>
               <th width="15%">조회수</th>
             </tr>
             <tr>
-							<c:forEach items="${bList}" let="BoardVO">
-								<th>${BoardVO}</th>
-								<th></th>
-								<th></th>
-								<th></th>
-								<th></th>
-							</c:forEach>
-							</tr>
-						</thead>
-						<tbody></tbody>
-					</table>
+              <c:forEach items="${bList}" let="BoardVO">
+                <th>${BoardVO}</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </c:forEach>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
         <hr />
         <!-- [[ Bootstrap 페이징 처리  구간  ]] -->
         <div style="display: flex; justify-content: center">

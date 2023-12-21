@@ -31,9 +31,7 @@ public class BoardController {
     // 서비스 주입받음
     List<Map<String, Object>> list = new ArrayList<>();
     list = boardLogic.boardList(pmap);
-    Gson g = new Gson();
-		String temp = g.toJson(list);
-    model.addAttribute("bList", temp);
+    model.addAttribute("bList", list);
     return "forward:/board/boardList.jsp";
   }
 }
