@@ -3,21 +3,24 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="com.mybatis.mapper.BoardMapper">
-	<!-- <insert id="noticeInsert" parameterType="java.util.Map">
-		insert into  notice(n_no,  n_title, n_content, n_writer)
-		values(seq_notice_no.nextval, #{n_title}, #{n_content}, #{n_writer})
+	<insert id="boardInsert" parameterType="com.example.demo.vo.BoardVO">
+		insert into board(b_no, b_title, b_content, b_writer, b_hit, b_date, b_file)
+		values(seq_board_no.nextval, #{b_title}, #{b_content}, #{b_writer},0,to_char(sysdate,'YYYY-MM-DD HH24:MI:SS'),#{b_file,  jdbcType=VARCHAR})
 	</insert>
-	<update id="noticeUpdate" parameterType="map">
-		update notice
-		      set n_title = #{n_title}
-		          ,  n_content = #{n_content}
-		          ,  n_writer = #{n_writer}
-		  where n_no = #{n_no}
+
+	<update id="boardUpdate" parameterType="map">
+		update board
+		      set b_title = #{b_title}
+		          ,  b_content = #{b_content}
+		          ,  b_writer = #{b_writer}
+		  where b_no = #{b_no}
 	</update>
-	<delete id="noticeDelete" parameterType="map">
-		delete from notice where n_no = #{n_no}  	
-	</delete> -->
-	<select id="boardList" parameterType="map"  resultType = "com.example.demo.vo.BoardVO">
+
+	<delete id="boardDelete" parameterType="map">
+		delete from board where b_no = #{b_no}  	
+	</delete> 
+
+	<select id="boardList" parameterType="map"  resultType = "map">
 		select b_no, b_title, b_content, b_writer from board
 		<where>
 			<if test="b_no!=null">AND b_no=#{b_no}</if>
