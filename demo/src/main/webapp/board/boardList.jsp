@@ -45,12 +45,13 @@
 		document.querySelector('#f_board').submit();//form태그에 묶인 componunt값들이 전송된다.
 	}
 	
-	const boardUpdate = () =>{
+	const boardDetail = (b_no) =>{
+		//console.log(b_no);
 		//input type = text name=b_tile
 		//input type = text name=b_content
 		//input type = text name=b_writer
 		//Enumeration<String> em = req.getParameterNames();
-		document.querySelector('#f_boardUpdate').submit();//form태그에 묶인 componunt값들이 전송된다.
+		location.href="/board/boardDetail?b_no="+b_no;
 	}
 	
 	const fileDown = (b_file) =>{//b_file  = image.png
@@ -127,14 +128,16 @@
 				%>					
 									<tr>
 										<td><%=rmap.get("B_NO")%></td>
-										<td><%=rmap.get("B_TITLE") %></td>
+										<td>
+											<a href="javascript:boardDetail('<%=rmap.get("B_NO") %>')"><%=rmap.get("B_TITLE") %></a>
+										</td>
 										<td><%=rmap.get("B_FILE") %></td>
 										<td><%=rmap.get("B_WRITER") %></td>
 										<td><%=rmap.get("B_HIT") %></td>
-										<td>
+										<!-- <td>
 											<button id="btn_update" class="btn btn-success" data-bs-toggle="modal"
 											data-bs-target="#boardUpdateForm" onclick="transValues(`{'b_no':'${pmap.B_NO}','b_title':'${pmap.B_TITLE}','b_writer':'${pmap.B_WRITER}','b_content':'${pmap.B_CONTENT}'}`)">수정</button>
-										</td>
+										</td> -->
 										<td>
 											<button id="btn_delete" class="btn btn-danger" onclick="boardDelete(`${pmap.B_NO}`)">삭제</button>
 										</td>
@@ -215,16 +218,14 @@
 	</div>
 	<!-- ========================== [[ 게시판 Modal ]] ========================== -->
 	<!-- ========================== [[ 게시판 Update Modal ]] ========================== -->
-	<div class="modal" id="boardUpdateForm">
+	<!-- <div class="modal" id="boardUpdateForm">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 
-				<!-- Modal Header -->
 				<div class="modal-header">
 					<h4 class="modal-title">게시판 수정</h4>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
-				<!-- Modal body -->
 				<div class="modal-body">
 					<form id="f_boardUpdate" method="post" enctype="multipart/form-data"
 						action="./boardUpdate">
@@ -258,7 +259,7 @@
 
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- ========================== [[ 게시판 Update Modal ]] ========================== -->
 
 </body>

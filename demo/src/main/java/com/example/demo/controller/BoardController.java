@@ -46,6 +46,25 @@ public class BoardController {
     // 12. forward방식으로 화면 URL로
     return "forward:/board/boardList.jsp";
   }
+  @GetMapping("boardDetail")
+  public String boardDetail(@RequestParam Map<String, Object> pmap, Model model) {
+    // @RequestParam : 브라우저에서 데이터를 받아오고싶다!
+    // Model : 브라우저로 데이터를 보낼거다!!
+    logger.info("=========== boardDetail 호출 =========");
+
+    List<Map<String, Object>> list = new ArrayList<>();
+
+    // 4. Logic단 호출
+    list = boardLogic.boardList(pmap);
+    // 11.브라우저로 DB에서 가져온 데이터 보내기
+    model.addAttribute("bList", list);
+    /*
+     * Gson g = new Gson();
+     * g.toJson(g)
+     */
+    // 12. forward방식으로 화면 URL로
+    return "forward:/board/boardDetail.jsp";
+  }
 
   @PostMapping("boardInsert")
   public String boardInsert(@RequestParam Map<String, Object> pmap) {
