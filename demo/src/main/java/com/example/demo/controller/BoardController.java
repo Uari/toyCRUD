@@ -89,6 +89,7 @@ public class BoardController {
     logger.info("==== boardDelete 호출 ====" + pmap);
     int result = 1;
     String test = null;
+    String test2=null;
     result = boardLogic.boardDelete(pmap);
     return "redirect:/board/boardList";
   }
