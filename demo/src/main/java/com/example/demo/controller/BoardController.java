@@ -87,8 +87,12 @@ public class BoardController {
   @GetMapping("boardDelete")
   public String boardDelete(@RequestParam Map<String, Object> pmap) {
     logger.info("==== boardDelete 호출 ====" + pmap);
-    int result = 0;
+    int result = 1;
+    String test = null;
     result = boardLogic.boardDelete(pmap);
     return "redirect:/board/boardList";
   }
+
+
+
 }
