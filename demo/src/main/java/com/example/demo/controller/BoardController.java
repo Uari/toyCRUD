@@ -84,21 +84,19 @@ public class BoardController {
     return "redirect:/board/boardList";
   }
 
+
+
+
+  /* 에러 부분 수정  
+   * 작성자 : 박병현
+   * 수정 일시 : 2024.01.04
+  */
   @GetMapping("boardDelete")
   public String boardDelete(@RequestParam Map<String, Object> pmap) {
     logger.info("==== boardDelete 호출 ====" + pmap);
-<<<<<<< HEAD
     int result = 1;
     String test = null;
-=======
-    int result = 0;
-    int result22 =11;
->>>>>>> develop
     result = boardLogic.boardDelete(pmap);
     return "redirect:/board/boardList";
   }
-
-
-
 }
- 
